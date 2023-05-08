@@ -20,12 +20,6 @@ int main(){
   printf("%s", buffer);
 }
 
-void tfgets(char *s, int size, FILE *stream){
-  Signal(SIGALRM, tfgets_alrm);
-  alarm(5);
-  fgets(s, size, stream);
-}
-
 int Sigemptyset(sigset_t *set){//sigemptyset
   int ret;
   if ((ret = sigemptyset(set)) < 0){
@@ -44,4 +38,9 @@ handler_t *Signal(int signum, handler_t *handler){//signal
     unix_error("Handler error");
   }
   return (old_action.sa_handler);
+}
+void tfgets(char *s, int size, FILE *stream){
+  Signal(SIGALRM, tfgets_alrm);
+  alarm(5);
+  fgets(s, size, stream);
 }
