@@ -10,6 +10,11 @@
                                       
 typedef void handler_t;
 
+void unix_error(const char *msg){//unix error
+  fprintf(stderr, "%s: %s\n", msg, strerror(errno));
+  exit(0);
+}
+
 void tfgets_alrm(int sig){
     return NULL;
 }
